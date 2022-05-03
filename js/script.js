@@ -39,7 +39,11 @@ $('.about_edu_carousel').slick({
 let accordion_items = document.querySelectorAll('.questions_accordion');
 for (i = 0; i <accordion_items.length; i++) {
     let thisItems = accordion_items[i];
+    let nextItems=accordion_items[i].nextElementSibling;
     thisItems.addEventListener('click', function(){
       thisItems.classList.toggle('active');
+    }) 
+    nextItems.addEventListener('click', function () {
+      thisItems.classList.add('deactive');
     })
 }
