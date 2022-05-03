@@ -55,4 +55,9 @@ $(document).ready(function(){
     $('.accordion_item_content').not($(this).next()).slideUp(400);
   });
 });
+$(document).ready(function(){
+  $('.burger').click(function(event){
+    $(this).toggleClass('active_burger') 
+  });
 
+  });
