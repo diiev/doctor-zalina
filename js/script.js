@@ -35,15 +35,24 @@ $('.about_edu_carousel').slick({
       }
     ]
   });
+  // аккордион на js
+// let accordion_items = document.querySelectorAll('.questions_accordion');
+// for (i = 0; i <accordion_items.length; i++) {
+//     let thisItems = accordion_items[i];
+//     let nextItems=accordion_items[i+1];
+//     thisItems.addEventListener('click', function(){
+//       thisItems.classList.toggle('active'); 
+//     }) 
+//     nextItems.addEventListener('click', function () {
+//       thisItems.classList.remove('active');
+//    })
+// } 
+// аккордион на jquery
+$(document).ready(function(){
+  $('.questions_accordion_item').click(function(event){
+    $(this).toggleClass('active').next().slideToggle(400);
+    $('.questions_accordion_item').not($(this)).removeClass('active');
+    $('.accordion_item_content').not($(this).next()).slideUp(400);
+  });
+});
 
-let accordion_items = document.querySelectorAll('.questions_accordion');
-for (i = 0; i <accordion_items.length; i++) {
-    let thisItems = accordion_items[i];
-    let nextItems=accordion_items[i].nextElementSibling;
-    thisItems.addEventListener('click', function(){
-      thisItems.classList.toggle('active');
-    }) 
-    nextItems.addEventListener('click', function () {
-      thisItems.classList.add('deactive');
-    })
-}

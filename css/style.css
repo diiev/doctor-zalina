@@ -2,6 +2,10 @@
     font-family: 'Montserrat';
     src: url('../fonts/Montserrat/static/Montserrat-Regular.ttf');
     src: url('../fonts/Montserrat/static/Montserrat-Light.ttf');
+} 
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../fonts/fontawesome-free-6.1.1-web/webfonts/fa-solid-900.woff2');
 }
 
 /* normalize */
@@ -233,66 +237,44 @@ h2 {
 
 .questions_accordion {
     border: 1px solid #E6E6E6;
-    transition: all .3s;
-    position: relative;
 }
 
 .questions_accordion_item {
-    height: 50px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding-left: 15px;
-    transition: all .3s;
 }
-
-.questions_accordion_item i {
-    transition: all .6s;
-    font-size: 16px;
-}
-
+.accordion_icon:before{ 
+    font-family: 'FontAwesome';
+     content: '\2b';
+   }
 .accordion_header {
     padding-left: 10px;
     font-size: 16px;
 }
-
 .accordion_item_content {
     padding-left: 15px;
     font-size: 16px;
     display: none;
-    z-index: -1;
-    transition: all .3s;
-}
-
+} 
 .questions_accordion_item:hover {
     background-color: #2B4748;
     cursor: pointer;
 
 }
-
 .questions_accordion:hover .accordion_header,
-.questions_accordion:hover i {
+.questions_accordion:hover .accordion_icon {
     color: #fff;
 }
 
-.questions_accordion.active .questions_accordion_item {
+.questions_accordion_item.active  {
     background-color: #E0C0AA;
     color: #fff;
 }
-.questions_accordion.deactive .questions_accordion_item {
-    /* background-color: #fff;
-    color: #000; */
-}
-.questions_accordion.active .questions_accordion_item i {
-    transform: rotate(180deg);
-}
-
-.questions_accordion.active .accordion_item_content {
-
-    display: block;
-}
-.questions_accordion.deactive .accordion_item_content {
-    display: none;
+.questions_accordion_item.active .accordion_icon:before { 
+    font-family: 'FontAwesome';
+    content: '\f068';
 }
 
 /* footer */
