@@ -34,7 +34,8 @@ $('.about_edu_carousel').slick({
         }
       }
     ]
-  });
+  }); 
+
 // accordion
 $(document).ready(function(){
   $('.questions_accordion_item').click(function(event){
@@ -44,11 +45,40 @@ $(document).ready(function(){
   });
 });
 
-// burger
-$(document).ready(function(){
-  $('.burger').click(function(event){
-    $('.burger, .menu').toggleClass('active_burger');
-    $('body').toggleClass('lock') 
-  });
- 
+// Меню бургер 
+const burger = document.querySelector('.burger');
+const menu = document.querySelector('.menu');
+if (burger) {
+  burger.addEventListener("click", function(e){
+    burger.classList.toggle('active_burger');
+    menu.classList.toggle('active_burger');
+    document.body.classList.toggle('lock')
+  })
+}
+// Прокрутка при клике 
+const menuLinks = document.querySelectorAll('.menu__list a[data-goto]');
+
+if (menuLinks.length > 0) {
+  menuLinks.forEach(menuLinks=>{
+    menuLinks.addEventListener("click", onMenuLinkClick);
   }); 
+  function onMenuLinkClick (e) {
+    const menuLink = e.target;
+    if (menuLink.dataset.goto && document.querySelector(menuLink.dataset.goto)) {
+      const gotoBlock = document.querySelector(menuLink.dataset.goto);
+      const gotoBlockValue = gotoBlock.getBoundingClientRect().top+scrollY - document.querySelector('header').offsetHeight;
+      // закрытие при нажатии 
+      if (burger.classList.contains('active_burger')) {
+          burger.classList.remove('active_burger');
+          menu.classList.remove('active_burger');
+          document.body.classList.remove('lock')
+        }
+     
+      window:scrollTo({
+        top:gotoBlockValue,
+        behavior:"smooth"
+      }); 
+      e.preventDefault();
+    }
+  }
+}
