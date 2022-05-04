@@ -57,7 +57,24 @@ $(document).ready(function(){
 });
 $(document).ready(function(){
   $('.burger').click(function(event){
-    $(this).toggleClass('active_burger') 
+    $('.burger, .menu').toggleClass('active_burger');
+    $('body').toggleClass('lock') 
   });
+ 
+  }); 
+  $(document).ready(function(){
+    $('.menu__list a').click(function(event){
+      $('.burger, .menu').remove('active_burger');
+      $('body').remove('lock') 
+    });
+   
+    }); 
+ 
+ const menu_burger = document.querySelector('.burger');
+ const menu = document.querySelector('.menu')
+ if (menu_burger.classList.contains('.active_burger')) { 
+   document.body.classList.remove('.lock');
+   menu_burger.classList.remove('.active_burger');
+   menu.classList.remove('.active_burger');
 
-  });
+ }
